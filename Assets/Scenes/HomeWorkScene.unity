@@ -9269,7 +9269,7 @@ Transform:
   m_GameObject: {fileID: 1801006594}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.7, y: 0, z: 0}
+  m_LocalPosition: {x: -22.6, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -9292,6 +9292,7 @@ MonoBehaviour:
   _passiveState: 0
   _enemyPrafabs: {fileID: 8445496297215987778, guid: f6eddb46f09266e4aa2884017c02013b,
     type: 3}
+  _enemy: {fileID: 6240573767709285007, guid: f6eddb46f09266e4aa2884017c02013b, type: 3}
   _player: {fileID: 83596124}
 --- !u!1 &1801563442 stripped
 GameObject:
