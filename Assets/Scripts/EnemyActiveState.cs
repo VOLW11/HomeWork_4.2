@@ -6,5 +6,5 @@ public enum EnemyActiveState
 {
     RunsAway,
     Pursues,
-    Dies
+    Death
 }

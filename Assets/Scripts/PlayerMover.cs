@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Mover : MonoBehaviour
+public class PlayerMover : MonoBehaviour
 {
     [SerializeField] private Rigidbody _rigidbody;
     [SerializeField] private float _rotationSpeed;

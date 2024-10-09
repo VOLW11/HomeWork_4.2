@@ -6,5 +6,5 @@ public enum EnemyPassiveState
 {
     StandsStill,
     PatrolsArea,
-    MovesChaotically
+    MovesRandom
 }

@@ -2,35 +2,31 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyAgr : MonoBehaviour
+public class EnemyMover : MonoBehaviour
 {
     private float _speed = 7f;
     private float _rotationSpeed = 700f;
 
-    private float _agroDistance = 15f;
-    [SerializeField] private Transform _heroTarget;
+    private Transform _target;
+    private Vector3 _direction;
+
+    public void Initialize(Vector3 direction)
+    {
+        _direction = direction;
+    }
 
     private void Update()
     {
-        Vector3 direction = GetDirectionToHero();
+        ProcessMoveTo(_direction);
 
-        if (direction.magnitude <= _agroDistance / 3)
-            return;
-
-        if (direction.magnitude <= _agroDistance)
-        {
-            Vector3 normalizeDirection = direction.normalized;
-
-            ProcessMoveTo(normalizeDirection);
-
-            ProcessRotateTo(normalizeDirection);
-        }
+        ProcessRotateTo(_direction);
     }
-
-    public Vector3 GetDirectionToHero() => _heroTarget.position - transform.position;
 
     private void ProcessRotateTo(Vector3 direction)
     {
+        if (_direction == Vector3.zero)
+            return;
+
         Quaternion lookRotation = Quaternion.LookRotation(direction);
         float step = _rotationSpeed * Time.deltaTime;
 
@@ -42,4 +38,3 @@ public class EnemyAgr : MonoBehaviour
         transform.Translate(direction * _speed * Time.deltaTime, Space.World);
     }
 }
-
