@@ -4,22 +4,19 @@ using UnityEngine;
 
 public class EnemyAgr1 : IBehaviour
 {
+    private EnemyMover _enemyMover;
+    private Transform _player;
 
-
-    public void EnemyBehaviour(Transform target, float speed, float agroDistance, Transform enemy)
+    public EnemyAgr1(Transform player)
     {
-        Vector3 direction = target.position - enemy.position;
-
-        if (direction.magnitude <= agroDistance / 3)
-            return;
-
-        if (direction.magnitude <= agroDistance)
-        {
-            Vector3 normalizeDirection = direction.normalized;
-
-            enemy.Translate(normalizeDirection * speed * Time.deltaTime, Space.World);
-        }
+        _player = player;
     }
 
+    public void EnemyBehaviour(EnemyMover enemyMover)
+    {
+        _enemyMover = enemyMover;
+        Vector3 direction = _player.position - _enemyMover.transform.position;
+        _enemyMover.Initialize(direction.normalized); 
+    }
 }
 

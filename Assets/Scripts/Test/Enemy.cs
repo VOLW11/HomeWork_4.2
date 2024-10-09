@@ -4,28 +4,23 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    private float _speed = 7f;
-  //  private float _rotationSpeed = 700f;
-    private float _agroDistance = 15f;
-
     private IBehaviour _behaviour;
-    private Transform _target;
-    private List<Transform> _targetList;
 
-    public void Initialize(IBehaviour behaviour, Transform target)
+   // private Transform _target;
+    private EnemyMover _enemyMover;
+
+    private void Awake()
     {
-        _behaviour = behaviour;
-        _target = target;
+        _enemyMover = GetComponent<EnemyMover>();
     }
 
-    public void Initialize(IBehaviour behaviour, List<Transform> targetList)
+    public void Initialize(IBehaviour behaviour)
     {
         _behaviour = behaviour;
-        _targetList = targetList;
     }
 
     private void Update()
     {
-        _behaviour.EnemyBehaviour(_target, _speed, _agroDistance, this.transform);
+        _behaviour.EnemyBehaviour(_enemyMover);
     }
 }
